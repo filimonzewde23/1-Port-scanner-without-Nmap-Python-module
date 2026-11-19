@@ -1,0 +1,32 @@
+
+#!/bin/bash
+
+# NSE Script Scanner
+
+echo "================================"
+echo "       NMAP NSE SCANNER"
+echo "================================"
+
+# Get target IP
+read -p "Enter Target IP: " IP
+
+# Get NSE script name
+read -p "Enter NSE Script Name: " SCRIPT
+
+# Check Nmap installation
+if ! command -v nmap &> /dev/null
+then
+    echo "Nmap is not installed!"
+    exit 1
+fi
+
+# Run Nmap scan
+echo "================================"
+echo "Scanning Target: $IP"
+echo "Using NSE Script: $SCRIPT"
+echo "================================"
+
+nmap -sV --script "$SCRIPT" "$IP"
+
+echo "================================"
+echo "Scan Completed!"
