@@ -1,0 +1,25 @@
+import ipaddress
+ip = input("Enter IP address: ")
+try:
+address = ipaddress.ip_address(ip)
+
+
+octet = int(ip.split(".")[0])
+
+if 1 <= octet <= 126:
+    ip_class = "Class A"
+elif 128 <= octet <= 191:
+    ip_class = "Class B"
+elif 192 <= octet <= 223:
+    ip_class = "Class C"
+elif 224 <= octet <= 239:
+    ip_class = "Class D"
+elif 240 <= octet <= 255:
+    ip_class = "Class E"
+else:
+    ip_class = "Reserved"
+
+print("\n===== HOST DISCOVERY TOOL =====")
+print("Entered IP Address:", address)
+print("IP Address Class:", ip_class)
+except ValueError:
